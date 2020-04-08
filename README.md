@@ -1,7 +1,7 @@
 # Azure Tools
 Outils Azure
 
-Vous devez avoir préalablement créé et configuré un SPN Azure Active Directory avec les droits suivants :</br>
+Permet de déployer le dashboard de monitoring suivant:</br>
 <img width="885" alt="action-slack-notify-rtcamp" src="/img/toto.jpg?raw=true"> 
 
 
