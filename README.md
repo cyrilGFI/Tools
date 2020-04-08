@@ -7,11 +7,8 @@ Outils Azure
 ```
 Permet de déployer le dashboard de monitoring suivant:
 ```
-
 <img width="885" alt="Dashboard Perso" src="https://github.com/cyrilGFI/Tools/blob/master/img/Dashboard.png?raw=true">
 
-### TOO
-[![Watch the image](/img/Dashboard.png)](http://ubuntu.r1chard.eu/videos/Git_Revenir_version_precedente.mp4)
 
 ```
 Tuto dans la vidéo ci-dessous:
