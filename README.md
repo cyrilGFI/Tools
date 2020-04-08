@@ -7,7 +7,7 @@ Outils Azure
 ```
 Permet de déployer le dashboard de monitoring suivant:
 ```
-<img width="885" alt="Dashboard Perso" src="https://github.com/cyrilGFI/Tools/blob/master/img/Dashboard.png?raw=true">
+<img width="885" alt="Dashboard Perso" src="https://github.com/cyrilGFI/Tools/blob/master/img/Dahsboard.png">
 
 
 ```
