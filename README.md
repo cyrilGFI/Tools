@@ -2,7 +2,7 @@
 <!--Outils Azure-->
 
 ## Dashboard WebApp personnalisé
-[![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://deploy.azure.com/?repository=https://github.com/cyrilGFI/AutomationAccount/ArmPs1_1.json)
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://deploy.azure.com/?repository=https://github.com/cyrilGFI/Tools/webApp-Dashboard.json)
 
 ```
 Permet de déployer le dashboard de monitoring suivant:
