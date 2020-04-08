@@ -21,6 +21,6 @@ Tuto dans la vidéo ci-dessous:
 
 
 
-<a href="http://armviz.io/#/?load=https%3a%2f%2fraw.githubusercontent.com%2feamonoreilly%2fStartStopPowerShellFunction%2fmaster%2fazuredeploy.json" target="_blank">
+<a href="http://armviz.io/#/?load=https%3a%2f%2fraw.githubusercontent.com%2fcyrilGFI%2FTools%2Fmaster%2FwebApp-Dashboard.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
