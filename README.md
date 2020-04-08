@@ -12,7 +12,7 @@ Permet de déployer le dashboard de monitoring suivant:
 ```
 <img width="885" alt="Dashboard Perso" src="https://github.com/cyrilGFI/Tools/blob/master/img/Dahsboard.png">
 
-
+<!--
 ```
 Tuto dans la vidéo ci-dessous:
 ```
@@ -24,3 +24,4 @@ Tuto dans la vidéo ci-dessous:
 <a href="http://armviz.io/#/?load=https%3a%2f%2fraw.githubusercontent.com%2fcyrilGFI%2FTools%2Fmaster%2FwebApp-Dashboard.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
+-->
