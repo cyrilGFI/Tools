@@ -19,4 +19,8 @@ Tuto dans la vidéo ci-dessous:
 [![Watch the video](/img/watchvideo.png)](https://cyrtest.azurewebsites.net/AzureCost/Create_Dashboard.mp4)
 
 
-<a href="http://armviz.io/#/?load=" target=https%3A%2F%2Fraw.githubusercontent.com%2FcyrilGFI%2FTools%2Fmaster%2FwebApp-Dashboard.json"_blank"><img src="http://armviz.io/visualizebutton.png"/></a>
+
+
+<a href="http://armviz.io/#/?load=https%3a%2f%2fraw.githubusercontent.com%2feamonoreilly%2fStartStopPowerShellFunction%2fmaster%2fazuredeploy.json" target="_blank">
+    <img src="http://armviz.io/visualizebutton.png"/>
+</a>
