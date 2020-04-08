@@ -2,22 +2,22 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "dashboard_name": {
+        "Nom_du_Dashboard": {
             "defaultValue": "WebApp_Dashboard",
             "type": "String",
             "metadata": {"description": "Nom du Dashboard à créer" }
         },
-        "webapp_shared": {
+        "Nom_de_WebApp": {
             "type": "String"
         },
-        "subscription_id": {
+        "Id_de_Souscription": {
             "type": "String"
         },
-        "resourcegroup_name": {
+        "Nom_du_Groupe_de_Ressource": {
             "type": "String",
             "metadata": {"description": "Nom du groupe de ressources" }
         },
-        "insight_name": {
+        "Nom_de_Insight_App": {
             "type": "String",
             "metadata": {"description": "Nomom de l'application insight" }
         }
@@ -27,10 +27,10 @@
         {
             "type": "Microsoft.Portal/dashboards",
             "apiVersion": "2019-01-01-preview",
-            "name": "[parameters('dashboard_name')]",
+            "name": "[parameters('Nom_du_Dashboard')]",
             "location": "westeurope",
             "tags": {
-                "hidden-title": "[parameters('dashboard_name')]"
+                "hidden-title": "[parameters('Nom_du_Dashboard')]"
             },
             "properties": {
                 "lenses": {
@@ -48,7 +48,7 @@
                                     "inputs": [
                                         {
                                             "name": "id",
-                                            "value": "[parameters('webapp_shared')]"
+                                            "value": "[parameters('Nom_de_WebApp')]"
                                         },
                                         {
                                             "name": "Version",
@@ -72,9 +72,9 @@
                                         {
                                             "name": "ComponentId",
                                             "value": {
-                                                "Name": "[parameters('insight_name')]",
-                                                "SubscriptionId": "[parameters('subscription_id')]",
-                                                "ResourceGroup": "[parameters('resourcegroup_name')]"
+                                                "Name": "[parameters('Nom_de_Insight_App')]",
+                                                "SubscriptionId": "[parameters('Id_de_Souscription')]",
+                                                "ResourceGroup": "[parameters('Nom_du_Groupe_de_Ressource')]"
                                             }
                                         },
                                         {
@@ -99,14 +99,14 @@
                                         {
                                             "name": "ComponentId",
                                             "value": {
-                                                "Name": "[parameters('insight_name')]",
-                                                "SubscriptionId": "[parameters('subscription_id')]",
-                                                "ResourceGroup": "[parameters('resourcegroup_name')]"
+                                                "Name": "[parameters('Nom_de_Insight_App')]",
+                                                "SubscriptionId": "[parameters('Id_de_Souscription')]",
+                                                "ResourceGroup": "[parameters('Nom_du_Groupe_de_Ressource')]"
                                             }
                                         },
                                         {
                                             "name": "ResourceId",
-                                            "value": "[parameters('webapp_shared')]"
+                                            "value": "[parameters('Nom_de_WebApp')]"
                                         }
                                     ],
                                     "type": "Extension/AppInsightsExtension/PartType/QuickPulseButtonSmallPart",
@@ -125,9 +125,9 @@
                                         {
                                             "name": "ComponentId",
                                             "value": {
-                                                "Name": "[parameters('insight_name')]",
-                                                "SubscriptionId": "[parameters('subscription_id')]",
-                                                "ResourceGroup": "[parameters('resourcegroup_name')]"
+                                                "Name": "[parameters('Nom_de_Insight_App')]",
+                                                "SubscriptionId": "[parameters('Id_de_Souscription')]",
+                                                "ResourceGroup": "[parameters('Nom_du_Groupe_de_Ressource')]"
                                             }
                                         },
                                         {
@@ -162,9 +162,9 @@
                                         {
                                             "name": "ComponentId",
                                             "value": {
-                                                "Name": "[parameters('insight_name')]",
-                                                "SubscriptionId": "[parameters('subscription_id')]",
-                                                "ResourceGroup": "[parameters('resourcegroup_name')]"
+                                                "Name": "[parameters('Nom_de_Insight_App')]",
+                                                "SubscriptionId": "[parameters('Id_de_Souscription')]",
+                                                "ResourceGroup": "[parameters('Nom_du_Groupe_de_Ressource')]"
                                             }
                                         },
                                         {
@@ -220,9 +220,9 @@
                                         {
                                             "name": "ComponentId",
                                             "value": {
-                                                "Name": "[parameters('insight_name')]",
-                                                "SubscriptionId": "[parameters('subscription_id')]",
-                                                "ResourceGroup": "[parameters('resourcegroup_name')]"
+                                                "Name": "[parameters('Nom_de_Insight_App')]",
+                                                "SubscriptionId": "[parameters('Id_de_Souscription')]",
+                                                "ResourceGroup": "[parameters('Nom_du_Groupe_de_Ressource')]"
                                             }
                                         },
                                         {
@@ -273,7 +273,7 @@
                                     "inputs": [
                                         {
                                             "name": "ResourceId",
-                                            "value": "[parameters('webapp_shared')]"
+                                            "value": "[parameters('Nom_de_WebApp')]"
                                         },
                                         {
                                             "name": "DataModel",
@@ -333,7 +333,7 @@
                                     "inputs": [
                                         {
                                             "name": "ResourceId",
-                                            "value": "[parameters('webapp_shared')]"
+                                            "value": "[parameters('Nom_de_WebApp')]"
                                         },
                                         {
                                             "name": "DataModel",
@@ -394,9 +394,9 @@
                                         {
                                             "name": "ComponentId",
                                             "value": {
-                                                "Name": "[parameters('insight_name')]",
-                                                "SubscriptionId": "[parameters('subscription_id')]",
-                                                "ResourceGroup": "[parameters('resourcegroup_name')]"
+                                                "Name": "[parameters('Nom_de_Insight_App')]",
+                                                "SubscriptionId": "[parameters('Id_de_Souscription')]",
+                                                "ResourceGroup": "[parameters('Nom_du_Groupe_de_Ressource')]"
                                             }
                                         },
                                         {
@@ -432,9 +432,9 @@
                                         {
                                             "name": "id",
                                             "value": {
-                                                "Name": "[parameters('insight_name')]",
-                                                "SubscriptionId": "[parameters('subscription_id')]",
-                                                "ResourceGroup": "[parameters('resourcegroup_name')]"
+                                                "Name": "[parameters('Nom_de_Insight_App')]",
+                                                "SubscriptionId": "[parameters('Id_de_Souscription')]",
+                                                "ResourceGroup": "[parameters('Nom_du_Groupe_de_Ressource')]"
                                             }
                                         },
                                         {
@@ -463,7 +463,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "sessions/count",
                                                             "aggregationType": 5,
@@ -475,7 +475,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "users/count",
                                                             "aggregationType": 5,
@@ -511,7 +511,7 @@
                                                             "extensionName": "HubsExtension",
                                                             "bladeName": "ResourceMenuBlade",
                                                             "parameters": {
-                                                                "id": "[parameters('webapp_shared')]",
+                                                                "id": "[parameters('Nom_de_WebApp')]",
                                                                 "menuid": "segmentationUsers"
                                                             }
                                                         }
@@ -544,7 +544,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "requests/failed",
                                                             "aggregationType": 7,
@@ -580,7 +580,7 @@
                                                             "extensionName": "HubsExtension",
                                                             "bladeName": "ResourceMenuBlade",
                                                             "parameters": {
-                                                                "id": "[parameters('webapp_shared')]",
+                                                                "id": "[parameters('Nom_de_WebApp')]",
                                                                 "menuid": "failures"
                                                             }
                                                         }
@@ -613,7 +613,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "requests/duration",
                                                             "aggregationType": 4,
@@ -649,7 +649,7 @@
                                                             "extensionName": "HubsExtension",
                                                             "bladeName": "ResourceMenuBlade",
                                                             "parameters": {
-                                                                "id": "[parameters('webapp_shared')]",
+                                                                "id": "[parameters('Nom_de_WebApp')]",
                                                                 "menuid": "performance"
                                                             }
                                                         }
@@ -682,7 +682,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "browserTimings/networkDuration",
                                                             "aggregationType": 4,
@@ -694,7 +694,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "browserTimings/processingDuration",
                                                             "aggregationType": 4,
@@ -706,7 +706,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "browserTimings/sendDuration",
                                                             "aggregationType": 4,
@@ -718,7 +718,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "browserTimings/receiveDuration",
                                                             "aggregationType": 4,
@@ -776,7 +776,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "availabilityResults/availabilityPercentage",
                                                             "aggregationType": 4,
@@ -812,7 +812,7 @@
                                                             "extensionName": "HubsExtension",
                                                             "bladeName": "ResourceMenuBlade",
                                                             "parameters": {
-                                                                "id": "[parameters('webapp_shared')]",
+                                                                "id": "[parameters('Nom_de_WebApp')]",
                                                                 "menuid": "availability"
                                                             }
                                                         }
@@ -845,7 +845,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "exceptions/server",
                                                             "aggregationType": 7,
@@ -857,7 +857,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "dependencies/failed",
                                                             "aggregationType": 7,
@@ -915,7 +915,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "performanceCounters/processorCpuPercentage",
                                                             "aggregationType": 4,
@@ -927,7 +927,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "performanceCounters/processCpuPercentage",
                                                             "aggregationType": 4,
@@ -985,7 +985,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "exceptions/browser",
                                                             "aggregationType": 7,
@@ -1043,7 +1043,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "availabilityResults/count",
                                                             "aggregationType": 7,
@@ -1101,7 +1101,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "performanceCounters/processIOBytesPerSecond",
                                                             "aggregationType": 4,
@@ -1159,7 +1159,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('webapp_shared')]"
+                                                                "id": "[parameters('Nom_de_WebApp')]"
                                                             },
                                                             "name": "performanceCounters/memoryAvailableBytes",
                                                             "aggregationType": 4,
