@@ -9,6 +9,7 @@
         },
         "Nom_de_Insight_App": {
             "type": "String",
+            "defaultValue": "toto",
             "metadata": {"description": "Nomom de l'application insight" }
         },
 	"Nom_Cyril": {
