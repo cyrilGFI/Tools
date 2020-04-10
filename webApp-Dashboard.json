@@ -15,7 +15,9 @@
             "metadata": {"description": "Nomom de l'application insight" }
         }
     },
-    "variables": {},
+    "variables": {
+	"insight_Name": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourcegroup().name,'providers/microsoft.insights/components/',parameters('Nom_de_Insight_App'))]"
+	},
     "resources": [
         {
             "type": "Microsoft.Portal/dashboards",
@@ -41,7 +43,7 @@
                                     "inputs": [
                                         {
                                             "name": "id",
-                                            "value": "[parameters('Nom_de_WebApp')]"
+                                            "value": "[variables('insight_Name')]"
                                         },
                                         {
                                             "name": "Version",
@@ -99,7 +101,7 @@
                                         },
                                         {
                                             "name": "ResourceId",
-                                            "value": "[parameters('Nom_de_WebApp')]"
+                                            "value": "[variables('insight_Name')]"
                                         }
                                     ],
                                     "type": "Extension/AppInsightsExtension/PartType/QuickPulseButtonSmallPart",
@@ -266,7 +268,7 @@
                                     "inputs": [
                                         {
                                             "name": "ResourceId",
-                                            "value": "[parameters('Nom_de_WebApp')]"
+                                            "value": "[variables('insight_Name')]"
                                         },
                                         {
                                             "name": "DataModel",
@@ -326,7 +328,7 @@
                                     "inputs": [
                                         {
                                             "name": "ResourceId",
-                                            "value": "[parameters('Nom_de_WebApp')]"
+                                            "value": "[variables('insight_Name')]"
                                         },
                                         {
                                             "name": "DataModel",
@@ -456,7 +458,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "sessions/count",
                                                             "aggregationType": 5,
@@ -468,7 +470,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "users/count",
                                                             "aggregationType": 5,
@@ -504,7 +506,7 @@
                                                             "extensionName": "HubsExtension",
                                                             "bladeName": "ResourceMenuBlade",
                                                             "parameters": {
-                                                                "id": "[parameters('Nom_de_WebApp')]",
+                                                                "id": "[variables('insight_Name')]",
                                                                 "menuid": "segmentationUsers"
                                                             }
                                                         }
@@ -537,7 +539,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "requests/failed",
                                                             "aggregationType": 7,
@@ -573,7 +575,7 @@
                                                             "extensionName": "HubsExtension",
                                                             "bladeName": "ResourceMenuBlade",
                                                             "parameters": {
-                                                                "id": "[parameters('Nom_de_WebApp')]",
+                                                                "id": "[variables('insight_Name')]",
                                                                 "menuid": "failures"
                                                             }
                                                         }
@@ -606,7 +608,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "requests/duration",
                                                             "aggregationType": 4,
@@ -642,7 +644,7 @@
                                                             "extensionName": "HubsExtension",
                                                             "bladeName": "ResourceMenuBlade",
                                                             "parameters": {
-                                                                "id": "[parameters('Nom_de_WebApp')]",
+                                                                "id": "[variables('insight_Name')]",
                                                                 "menuid": "performance"
                                                             }
                                                         }
@@ -675,7 +677,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "browserTimings/networkDuration",
                                                             "aggregationType": 4,
@@ -687,7 +689,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "browserTimings/processingDuration",
                                                             "aggregationType": 4,
@@ -699,7 +701,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "browserTimings/sendDuration",
                                                             "aggregationType": 4,
@@ -711,7 +713,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "browserTimings/receiveDuration",
                                                             "aggregationType": 4,
@@ -769,7 +771,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "availabilityResults/availabilityPercentage",
                                                             "aggregationType": 4,
@@ -805,7 +807,7 @@
                                                             "extensionName": "HubsExtension",
                                                             "bladeName": "ResourceMenuBlade",
                                                             "parameters": {
-                                                                "id": "[parameters('Nom_de_WebApp')]",
+                                                                "id": "[variables('insight_Name')]",
                                                                 "menuid": "availability"
                                                             }
                                                         }
@@ -838,7 +840,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "exceptions/server",
                                                             "aggregationType": 7,
@@ -850,7 +852,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "dependencies/failed",
                                                             "aggregationType": 7,
@@ -908,7 +910,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "performanceCounters/processorCpuPercentage",
                                                             "aggregationType": 4,
@@ -920,7 +922,7 @@
                                                         },
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "performanceCounters/processCpuPercentage",
                                                             "aggregationType": 4,
@@ -978,7 +980,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "exceptions/browser",
                                                             "aggregationType": 7,
@@ -1036,7 +1038,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "availabilityResults/count",
                                                             "aggregationType": 7,
@@ -1094,7 +1096,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "performanceCounters/processIOBytesPerSecond",
                                                             "aggregationType": 4,
@@ -1152,7 +1154,7 @@
                                                     "metrics": [
                                                         {
                                                             "resourceMetadata": {
-                                                                "id": "[parameters('Nom_de_WebApp')]"
+                                                                "id": "[variables('insight_Name')]"
                                                             },
                                                             "name": "performanceCounters/memoryAvailableBytes",
                                                             "aggregationType": 4,
