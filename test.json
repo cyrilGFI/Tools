@@ -16,7 +16,7 @@
             "type": "String",
             "defaultValue": "tutu",
             "allowedValues": ["tata","tutu","toto"],
-            "metadata": {"description": "Nom de l'application insight" }
+            "metadata": {"description": "Test Param" }
         }
     },
     "variables": {
