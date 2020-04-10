@@ -16,7 +16,7 @@
         }
     },
     "variables": {
-	"insight_Name": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourcegroup().name,'providers/microsoft.insights/components/',parameters('Nom_de_Insight_App'))]"
+	"insight_Name": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourcegroup().name,'/providers/microsoft.insights/components/',parameters('Nom_de_Insight_App'))]"
 	},
     "resources": [
         {
