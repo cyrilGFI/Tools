@@ -9,11 +9,10 @@
         },
         "Nom_de_Insight_App": {
             "type": "String",
-            "metadata": {"description": "Nomom de l'application insight" }
+            "metadata": {"description": "Nom de l'application insight" }
         },
 	"Test": {
             "type": "String",
-            "allowedValues": ["tutu","toto"],
             "metadata": {"description": "Nomom de l'application insight" }
         }
     },
