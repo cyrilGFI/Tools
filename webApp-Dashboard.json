@@ -7,9 +7,12 @@
             "type": "String",
             "metadata": {"description": "Nom du Dashboard à créer" }
         },
+        "Nom_de_WebApp": {
+            "type": "String"
+        },
         "Nom_de_Insight_App": {
             "type": "String",
-            "metadata": {"description": "Nom de l'application insight" }
+            "metadata": {"description": "Nomom de l'application insight" }
         }
     },
     "variables": {
