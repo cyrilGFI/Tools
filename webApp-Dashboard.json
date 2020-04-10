@@ -66,8 +66,8 @@
                                             "name": "ComponentId",
                                             "value": {
                                                 "Name": "[parameters('Nom_de_Insight_App')]",
-                                                "SubscriptionId": "[subscription()].Id",
-                                                "ResourceGroup": "[resourceGroup()]"
+                                                "SubscriptionId": "[subscription().Id]",
+                                                "ResourceGroup": "[resourceGroup().name]"
                                             }
                                         },
                                         {
@@ -93,8 +93,8 @@
                                             "name": "ComponentId",
                                             "value": {
                                                 "Name": "[parameters('Nom_de_Insight_App')]",
-                                                "SubscriptionId": "[subscription()].id",
-                                                "ResourceGroup": "[resourcegroup()]"
+                                                "SubscriptionId": "[subscription().id]",
+                                                "ResourceGroup": "[resourcegroup().name]"
                                             }
                                         },
                                         {
