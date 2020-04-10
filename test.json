@@ -13,6 +13,7 @@
         },
 	"Nom_Cyril": {
             "type": "String",
+            "allowedValues": ["tutu","toto"],
             "metadata": {"description": "Nomom de l'application insight" }
         }
     },
