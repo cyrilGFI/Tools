@@ -9,10 +9,6 @@
         },
         "Nom_de_WebApp": {
             "type": "String"
-        },
-        "Nom_de_Insight_App": {
-            "type": "String",
-            "metadata": {"description": "Nomom de l'application insight" }
         }
     },
     "variables": {
