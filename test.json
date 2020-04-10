@@ -8,8 +8,8 @@
             "metadata": {"description": "Nom du Dashboard à créer" }
         },
         "Nom_de_Insight_App": {
-            "type": "String",
             "defaultValue": "toto",
+            "type": "String",
             "metadata": {"description": "Nomom de l'application insight" }
         },
 	"Nom_Cyril": {
