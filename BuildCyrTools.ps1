@@ -1,7 +1,28 @@
-﻿$envPath = [environment]::getfolderpath("mydocuments")
+﻿<#
+    .SYNOPSIS
+    Copie le module dans le répertoire Powershell.
+
+    .DESCRIPTION
+    Copie le module dans le répertoire Powershell.
+
+    .EXAMPLE
+
+    .NOTES
+    none
+
+    .LINK
+    none
+
+    .INPUTS
+    none
+
+    .OUTPUTS
+#>
+
+$envPath = [environment]::getfolderpath("mydocuments")
 $Platform = $PSVersionTable.Platform
 $Module = "CyrTools"
-$endMessage = "Module $($Module) Copié, lancer Import-Module $($Module)"
+$endMessage = "Module $($Module) copié, taper `"Import-Module $($Module)`""
 
 $ErrorActionPreference = "Stop" 
 if ( -not (Test-Path $Module)){throw [System.Exception]::new("Module $($Module) non trouvé !!")}
