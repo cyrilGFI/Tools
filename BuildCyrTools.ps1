@@ -22,3 +22,5 @@ if ($Platform.ToUpper() -eq 'WIN32NT')
     $envPath += "\PowerShell\Modules"
     Copy-Item -r $Module $envPath
 }
+
+Write-Warning "Module $($Module) Copié, lancer Import-Module $($Module)"
