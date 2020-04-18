@@ -26,5 +26,5 @@ Test:
     <img src="http://armviz.io/visualizebutton.png"/>
 </a><br>
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FcyrilGFI%2FTools%2FDev%2Ftest.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true"/>
+<img src="https://raw.githubusercontent.com/cyrilGFI/Tools/Dev/img/deploytoazure.svg?sanitize=true"/>
 </a>
