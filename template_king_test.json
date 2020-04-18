@@ -1,0 +1,305 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "String",
+            "defaultValue": "francecentral"
+        },
+        "imgageResourceGroup": {
+            "type": "String",
+            "defaultValue": "Gr-Crm-Org"
+        },
+        "imageName": {
+            "type": "String"
+        },
+        "siteName": {
+            "type": "string",
+            "defaultValue": "[concat('site', uniqueString(resourceGroup().id))]",
+            "metadata": {
+            "description": "The site name. To use the default value, do not specify a new value."
+            }
+        },
+        "networkInterfaceName": {
+            "type": "String"
+        },
+        "subnetName": {
+            "type": "String"
+        },
+        "virtualNetworkName": {
+            "type": "String"
+        },
+        "publicIpAddressName": {
+            "type": "String"
+        },
+        "virtualMachineName": {
+            "type": "String"
+        },
+        "osDiskType": {
+        "type": "string",
+        "defaultValue": "Premium_LRS",
+        "allowedValues": [
+            "Standard_LRS",
+            "Premium_LRS",
+            "StandardSSD_LRS",
+            "UltraSSD_LRS"
+        ]
+        },
+        "virtualMachineSize": {
+            "type": "String",
+            "defaultValue": "Standard_D4s_v3"
+        },
+        "diagnosticsStorageAccountName": {
+            "type": "String"
+        },
+        "adminUsername": {
+            "type": "String",
+            "defaultValue": "AdminCRM"
+        },
+        "adminPassword": {
+            "type": "SecureString"
+        },
+        "sqlAuthenticationLogin": {
+            "type": "String"
+        },
+        "sqlAuthenticationPassword": {
+            "type": "SecureString"
+        },
+		"autoShutdownStatus": {
+			"defaultValue": "Enabled",
+            "type": "String"
+        },
+        "autoShutdownTime": {
+			"defaultValue": "20:00",
+            "type": "String"
+        },
+        "autoShutdownTimeZone": {
+			"defaultValue": "Romance Standard Time",
+            "type": "String"
+        },
+        "autoShutdownNotificationStatus": {
+			"defaultValue": "Disabled",
+            "type": "String"
+        },
+        "autoShutdownNotificationLocale": {
+			"defaultValue": "fr",
+            "type": "String"
+        }
+    },
+    "variables": {
+        "vnetRef": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourcegroup().name,'/providers/microsoft.network/virtualNetworks/',parameters('virtualNetworkName'))]",
+        "subnetRef": "[concat(variables('vnetref'), '/subnets/', parameters('subnetName'))]",
+        "publicIpAddressType": "Static",
+        "publicIpAddressSku": "Standard",
+        "enableAcceleratedNetworking": true,
+        "imageReference": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',parameters('imgageResourceGroup'),'/providers/Microsoft.Compute/images/',parameters('imageName'))]",
+        "sqlVirtualMachineName": "[parameters('virtualMachineName')]",
+        "sqlVirtualMachineLocation": "[parameters('location')]",
+        "sqlPortNumber": "1433",
+        "sqlConnectivityType": "Public",
+        "sqlStorageDisksCount": 1,
+        "sqlStorageWorkloadType": "GENERAL",
+        "sqlStorageDisksConfigurationType": "NEW",
+        "sqlStorageStartingDeviceId": 2,
+        "sqlAutopatchingDayOfWeek": "Sunday",
+        "sqlAutopatchingStartHour": "2",
+        "sqlAutopatchingWindowDuration": "60",
+        "rServicesEnabled": "false",
+        "dataDisks":  [
+                {
+                    "lun": 0,
+                    "createOption": "fromImage",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": null,
+                    "storageAccountType": "StandardSSD_LRS",
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": {
+                        "id": null
+                    }
+                }
+            ]
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2018-10-01",
+            "name": "[parameters('networkInterfaceName')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressName'))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            },
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIpAddress": {
+                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+                            }
+                        }
+                    }
+                ],
+                "enableAcceleratedNetworking": "[variables('enableAcceleratedNetworking')]"
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIpAddresses",
+            "apiVersion": "2019-02-01",
+            "name": "[parameters('publicIpAddressName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[variables('publicIpAddressSku')]"
+            },
+            "properties": {
+                "publicIpAllocationMethod": "[variables('publicIpAddressType')]"
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-03-01",
+            "name": "[parameters('virtualMachineName')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]"
+            ],
+            "identity": {
+                "type": "systemAssigned"
+            },
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[parameters('virtualMachineSize')]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "id": "[variables('imageReference')]"
+                    },
+                    "osDisk": {
+                        "createOption": "fromImage",
+                        "managedDisk": {
+                            "storageAccountType": "[parameters('osDiskType')]"
+                        }
+                    },
+                    "copy": [
+                        {
+                            "name": "dataDisks",
+                            "count": "[length(variables('dataDisks'))]",
+                            "input": {
+                                "lun": "[variables('dataDisks')[copyIndex('dataDisks')].lun]",
+                                "createOption": "[variables('dataDisks')[copyIndex('dataDisks')].createOption]",
+                                "caching": "[variables('dataDisks')[copyIndex('dataDisks')].caching]",
+                                "writeAcceleratorEnabled": "[variables('dataDisks')[copyIndex('dataDisks')].writeAcceleratorEnabled]",
+                                "diskSizeGB": "[variables('dataDisks')[copyIndex('dataDisks')].diskSizeGB]",
+                                "managedDisk": {
+                                    "id": "[coalesce(variables('dataDisks')[copyIndex('dataDisks')].id, if(equals(variables('dataDisks')[copyIndex('dataDisks')].name, json('null')), json('null'), resourceId('Microsoft.Compute/disks', variables('dataDisks')[copyIndex('dataDisks')].name)))]",
+                                    "storageAccountType": "[variables('dataDisks')[copyIndex('dataDisks')].storageAccountType]"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachineName')]",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('adminPassword')]",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceName'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https://', parameters('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.DevTestLab/schedules",
+            "apiVersion": "2017-04-26-preview",
+            "name": "[concat('shutdown-computevm-', parameters('virtualMachineName'))]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+            ],
+            "properties": {
+                "status": "[parameters('autoShutdownStatus')]",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "[parameters('autoShutdownTime')]"
+                },
+                "timeZoneId": "[parameters('autoShutdownTimeZone')]",
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]",
+                "notificationSettings": {
+                    "status": "[parameters('autoShutdownNotificationStatus')]",
+                    "notificationLocale": "[parameters('autoShutdownNotificationLocale')]",
+                    "timeInMinutes": "30"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.SqlVirtualMachine/SqlVirtualMachines",
+            "apiVersion": "2017-03-01-preview",
+            "name": "[variables('sqlVirtualMachineName')]",
+            "location": "[variables('sqlVirtualMachineLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]"
+            ],
+            "properties": {
+                "virtualMachineResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('sqlVirtualMachineName'))]",
+                "sqlManagement": "Full",
+                "SqlServerLicenseType": "PAYG",
+                "AutoPatchingSettings": {
+                    "Enable": true,
+                    "DayOfWeek": "[variables('sqlAutopatchingDayOfWeek')]",
+                    "MaintenanceWindowStartingHour": "[variables('sqlAutopatchingStartHour')]",
+                    "MaintenanceWindowDuration": "[variables('sqlAutopatchingWindowDuration')]"
+                },
+                "KeyVaultCredentialSettings": {
+                    "Enable": false,
+                    "CredentialName": ""
+                },
+                "ServerConfigurationsManagementSettings": {
+                    "SQLConnectivityUpdateSettings": {
+                        "ConnectivityType": "[variables('sqlConnectivityType')]",
+                        "Port": "[variables('sqlPortNumber')]",
+                        "SQLAuthUpdateUserName": "[parameters('sqlAuthenticationLogin')]",
+                        "SQLAuthUpdatePassword": "[parameters('sqlAuthenticationPassword')]"
+                    },
+                    "SQLWorkloadTypeUpdateSettings": {
+                        "SQLWorkloadType": "[variables('sqlStorageWorkloadType')]"
+                    },
+                    "SQLStorageUpdateSettings": {
+                        "DiskCount": "[variables('sqlStorageDisksCount')]",
+                        "DiskConfigurationType": "[variables('sqlStorageDisksConfigurationType')]",
+                        "StartingDeviceID": "[variables('sqlStorageStartingDeviceId')]"
+                    },
+                    "AdditionalFeaturesServerConfigurations": {
+                        "IsRServicesEnabled": "[variables('rServicesEnabled')]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "adminUsername": {
+            "type": "String",
+            "value": "[parameters('adminUsername')]"
+        }
+    }
+}
