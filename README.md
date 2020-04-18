@@ -25,6 +25,6 @@ Test:
 <a href="http://armviz.io/#/?load=https%3a%2f%2fraw.githubusercontent.com%2fcyrilGFI%2FTools%2Fmaster%2FwebApp-Dashboard.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a><br>
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FcyrilGFI%2FTools%2FDev%2Ftest.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FcyrilGFI%2FTools%2FDev%2Ftemplate_VMKingsWay.json.json" target="_blank">
 <img src="https://raw.githubusercontent.com/cyrilGFI/Tools/Dev/img/deploytoazure.svg?sanitize=true"/>
 </a>
