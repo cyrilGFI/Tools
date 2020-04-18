@@ -5,12 +5,12 @@
 #>
 
 #region Template Functions
-	$functionPath = "$($PSScriptRoot)\Functions\"
-	$functionList = Get-ChildItem -Path $functionPath -Name
-	foreach($function in $functionList)
-	{
-		.$functionPath\$function
-	}
+$functionPath = "$($PSScriptRoot)\Functions\"
+$functionList = Get-ChildItem -Path $functionPath -Name
+foreach($function in $functionList)
+{
+	.$functionPath\$function
+}
 #endregion Template Functions
 
 <#
