@@ -1,13 +1,11 @@
-<#
+﻿<#
 	.SYNOPSIS
 	Create a self signed certificate
 	
 	.DESCRIPTION
 	Create a self signed certificate
 	
-	.PARAMETER Datasource
-	
-	.PARAMETER Database
+	.PARAMETER certificateName
 	
 	.OUTPUTS
 	

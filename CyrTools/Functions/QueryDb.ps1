@@ -1,4 +1,4 @@
-#Requires -RunAsAdministrator
+﻿#Requires -RunAsAdministrator
 function Set-ServerType([string] $Query, [string] $connectionString, [string] $ServerType, [string] $Database)
 {
     switch ( $ServerType )

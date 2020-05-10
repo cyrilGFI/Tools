@@ -1,13 +1,9 @@
-<#
+﻿<#
 	.SYNOPSIS
 	Créer un lecteur virtuel C:
 	
 	.DESCRIPTION
 	Créer un lecteur virtuel C: (utile sous Linux)
-	
-	.PARAMETER Datasource
-	
-	.PARAMETER Database
 	
 	.OUTPUTS
 	
