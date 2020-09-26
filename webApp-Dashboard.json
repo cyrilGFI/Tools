@@ -9,11 +9,11 @@
         },
         "Nom_de_Insight_App": {
             "type": "String",
-            "metadata": {"description": "Nomom de l'application insight" }
+            "metadata": {"description": "Nom de l'application insight" }
         },
 	"Nom_Cyril": {
             "type": "String",
-            "metadata": {"description": "Nomom de l'application insight" }
+            "metadata": {"description": "Nom de l'application insight" }
         }
     },
     "variables": {
